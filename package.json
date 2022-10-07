@@ -15,7 +15,9 @@
     "react-dom": "18.1.0",
     "react-hook-form": "^7.36.1",
     "react-icons": "^4.4.0",
-    "tailwind-scrollbar-hide": "^1.1.7"
+    "swiper": "^8.4.2",
+    "tailwind-scrollbar-hide": "^1.1.7",
+    "tailwindcss-selection": "^1.0.0"
   },
   "devDependencies": {
     "@types/aos": "^3.0.4",

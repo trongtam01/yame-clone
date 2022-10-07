@@ -1,86 +1,78 @@
-import type { NextPage } from 'next'
-import Head from 'next/head'
-import Image from 'next/image'
+import type { NextPage } from "next";
+import Head from "next/head";
+import Image from "next/image";
+import Banner from "../components/Banner";
+import Footer from "../components/Footer";
+import Header from "../components/Header";
+import Products from "../components/Products";
+import Sales from "../components/Sales";
+import ThumbColor from "../components/ThumbColor";
+import Thumnail from "../components/Thumbnail";
 
 const Home: NextPage = () => {
   return (
-    <div className="flex min-h-screen flex-col items-center justify-center py-2">
+    <div className="h-[200vh]">
       <Head>
-        <title>Create Next App</title>
-        <link rel="icon" href="/favicon.ico" />
+        <title>
+          YaMe | Mua Online Quần Áo Thời Trang Nam Nữ Giá Rẻ - YaMe.vn
+        </title>
+        <link rel="icon" href="./img/yame-fav.png" />
       </Head>
+      {/* Header */}
+      <Header />
 
-      <main className="flex w-full flex-1 flex-col items-center justify-center px-20 text-center">
-        <h1 className="text-6xl font-bold">
-          Welcome to{' '}
-          <a className="text-blue-600" href="https://nextjs.org">
-            Next.js!
-          </a>
-        </h1>
-
-        <p className="mt-3 text-2xl">
-          Get started by editing{' '}
-          <code className="rounded-md bg-gray-100 p-3 font-mono text-lg">
-            pages/index.tsx
-          </code>
-        </p>
-
-        <div className="mt-6 flex max-w-4xl flex-wrap items-center justify-around sm:w-full">
-          <a
-            href="https://nextjs.org/docs"
-            className="mt-6 w-96 rounded-xl border p-6 text-left hover:text-blue-600 focus:text-blue-600"
-          >
-            <h3 className="text-2xl font-bold">Documentation &rarr;</h3>
-            <p className="mt-4 text-xl">
-              Find in-depth information about Next.js features and its API.
+      {/* Body */}
+      <main className="">
+        {/* Banner */}
+        <div className="mt-16 md:mt-20 lg:mt-24">
+          <Banner img="./img/bannerweb-fix.jpg" />
+        </div>
+        {/* Thumbnail */}
+        <Thumnail />
+        {/* Thumbnail Color */}
+        <ThumbColor />
+        <div className="">
+          <div className="my-3 text-center text-2xl">
+            <h4 className="font-medium">Top sản phẩm HOT</h4>
+            <p className="font-thin">
+              Những sản phẩm thời trang mới nhất/Hot nhất
             </p>
-          </a>
-
-          <a
-            href="https://nextjs.org/learn"
-            className="mt-6 w-96 rounded-xl border p-6 text-left hover:text-blue-600 focus:text-blue-600"
-          >
-            <h3 className="text-2xl font-bold">Learn &rarr;</h3>
-            <p className="mt-4 text-xl">
-              Learn about Next.js in an interactive course with quizzes!
+          </div>
+        </div>
+        {/* Products */}
+        <Products title="Xem tất cả áo thun" />
+        {/* Banner */}
+        <div className="my-5">
+          <Banner img="./img/Home_banner_(1280x800).jpg" />
+        </div>
+        {/* Products */}
+        <Products title="Xem tất cả áo sơ mi" />
+        {/* Banner */}
+        <div className="my-5">
+          <Banner img="./img/Banner_NCG.jpg" />
+        </div>
+        {/* Products */}
+        <Products title="Xem tất cả nón" />
+        {/* Sales */}
+        <div className="mt-8 border-t border-black/30 pt-4">
+          <div className="my-3 text-center">
+            <h4 className="text-2xl">Các chương trình Khuyến mãi</h4>
+            <p className="my-2 text-lg">
+              Đừng bỏ lỡ các chương trình khuyến mãi Hot tại Yame.vn
             </p>
-          </a>
-
-          <a
-            href="https://github.com/vercel/next.js/tree/canary/examples"
-            className="mt-6 w-96 rounded-xl border p-6 text-left hover:text-blue-600 focus:text-blue-600"
-          >
-            <h3 className="text-2xl font-bold">Examples &rarr;</h3>
-            <p className="mt-4 text-xl">
-              Discover and deploy boilerplate example Next.js projects.
-            </p>
-          </a>
-
-          <a
-            href="https://vercel.com/import?filter=next.js&utm_source=create-next-app&utm_medium=default-template&utm_campaign=create-next-app"
-            className="mt-6 w-96 rounded-xl border p-6 text-left hover:text-blue-600 focus:text-blue-600"
-          >
-            <h3 className="text-2xl font-bold">Deploy &rarr;</h3>
-            <p className="mt-4 text-xl">
-              Instantly deploy your Next.js site to a public URL with Vercel.
-            </p>
-          </a>
+          </div>
+          <div>
+            <Sales />
+          </div>
         </div>
       </main>
 
-      <footer className="flex h-24 w-full items-center justify-center border-t">
-        <a
-          className="flex items-center justify-center gap-2"
-          href="https://vercel.com?utm_source=create-next-app&utm_medium=default-template&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Powered by{' '}
-          <Image src="/vercel.svg" alt="Vercel Logo" width={72} height={16} />
-        </a>
-      </footer>
+      {/* Footer */}
+      <div className="mt-8">
+        <Footer />
+      </div>
     </div>
-  )
-}
+  );
+};
 
-export default Home
+export default Home;
