@@ -29,8 +29,8 @@ const Thumnail = () => {
         }}
         slidesPerView={2}
         pagination={{ clickable: true }}
-        onSwiper={(swiper) => console.log(swiper)}
-        onSlideChange={() => console.log("slide change")}
+        // onSwiper={(swiper) => console.log(swiper)}
+        // onSlideChange={() => console.log("slide change")}
         breakpoints={{
           320: {
             // width: 576,

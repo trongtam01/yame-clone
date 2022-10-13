@@ -4,7 +4,7 @@ import { FaTshirt } from "react-icons/fa";
 import { BiChevronDown } from "react-icons/bi";
 import { GiDjedPillar } from "react-icons/gi";
 // import Swiper core and required modules
-import { Autoplay, Pagination, A11y } from "swiper";
+import { A11y } from "swiper";
 
 import { Swiper, SwiperSlide } from "swiper/react";
 
@@ -46,8 +46,8 @@ const Footer = () => {
           modules={[A11y]}
           spaceBetween={50}
           slidesPerView={4}
-          onSwiper={(swiper) => console.log(swiper)}
-          onSlideChange={() => console.log("slide change")}
+          // onSwiper={(swiper) => console.log(swiper)}
+          // onSlideChange={() => console.log("slide change")}
           breakpoints={{
             320: {
               // width: 576,

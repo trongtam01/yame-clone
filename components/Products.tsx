@@ -15,7 +15,7 @@ interface Props {
   title: string;
 }
 
-SwiperCore.use([Pagination, Autoplay]);
+// SwiperCore.use([Pagination, Autoplay]);
 
 const Products = ({ title }: Props) => {
   //   const swiperRef = React.useRef<SwiperCore>();
