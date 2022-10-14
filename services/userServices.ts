@@ -11,7 +11,7 @@ const RegisterNewUser = (
     password,
     username,
     phone,
-  });
+  }); 
 };
 
 const loginUser = (valueLogin: number | string, password: string) => {
@@ -25,4 +25,8 @@ const logoutUser = () => {
   return axios.post("/api/v1/logout");
 };
 
-export { RegisterNewUser, loginUser, logoutUser };
+const getUserAccount = () => {
+  return axios.get("/api/v1/account");
+};
+
+export { RegisterNewUser, loginUser, logoutUser, getUserAccount };

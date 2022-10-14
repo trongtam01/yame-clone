@@ -1,6 +1,6 @@
 import Link from "next/link";
 import { useRouter } from "next/router";
-import React, { useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import {
   HiChevronDown,
   HiMenu,
@@ -10,16 +10,14 @@ import {
   HiOutlineX,
 } from "react-icons/hi";
 import { toast } from "react-toastify";
-import { useAppDispatch, useAppSelector } from "../app/hooks";
-import { logoutUserSlice, selectLogin } from "../features/user/loginSlice";
+import { UserContext } from "../context/UserContext";
 import { logoutUser } from "../services/userServices";
+import { UserContextType } from "../typings";
 
 const Header = () => {
   const router = useRouter();
 
-  const dispatch = useAppDispatch()
-
-  const user = useAppSelector(selectLogin);
+  const { user, logoutContext } = useContext(UserContext) as UserContextType;
 
   const [isScrolled, setIsScrolled] = useState(false);
 
@@ -41,12 +39,23 @@ const Header = () => {
     };
   }, []);
 
+  const userDefault = {
+    isLoading: true,
+    isAuthenticated: false,
+    token: "",
+    account: {
+      groupWithRoles: "",
+      email: "",
+      username: "",
+    },
+  };
+
   const handleLogOut = async () => {
     let res = await logoutUser(); //clear cookie
     localStorage.removeItem("yame-token"); // clear localstorge
     console.log("userLogout", user);
     if (res && res.EC === 0) {
-      dispatch(logoutUserSlice("")); //clear user contact
+      logoutContext(userDefault); //clear user contact
       router.push("/login");
     } else {
       toast.error(res.EM);
@@ -59,7 +68,7 @@ const Header = () => {
         <div className="inline-flex text-3xl lg:hidden">
           <HiMenu />
         </div>
-        <div className="pl-5 lg:pl-0">
+        <div className="cursor-pointer pl-5 lg:pl-0">
           <Link href="/">
             <img
               className="h-8 md:h-12"
@@ -115,7 +124,7 @@ const Header = () => {
               </span>
             </Link>
           </p>
-          <p className="group relative">
+          <div className="group relative">
             <div className="headerIcon">
               <Link href="/login">
                 <span>
@@ -127,20 +136,26 @@ const Header = () => {
               <ul className="logoutPosition group-hover:visible group-hover:opacity-100">
                 <li
                   className="my-1 cursor-pointer hover:bg-[#222] hover:text-white"
+                  onClick={() => router.push("/admin")}
+                >
+                  <span className="py-2 px-5">Admin</span>
+                </li>
+                <li
+                  className="my-1 cursor-pointer hover:bg-[#222] hover:text-white"
                   onClick={() => handleLogOut()}
                 >
                   <span className="py-2 px-5">Logout</span>
                 </li>
               </ul>
             )}
-          </p>
-          <p className="headerIcon">
+          </div>
+          <div className="headerIcon">
             <Link href="/">
               <span>
                 <HiOutlineBriefcase />
               </span>
             </Link>
-          </p>
+          </div>
           <span className="absolute -top-3 -right-2 rounded-full bg-[#dc3545] px-[3px] text-sm">
             0
           </span>

@@ -33,7 +33,6 @@ const Register = () => {
     phone,
   }) => {
     let res = await RegisterNewUser(email, password, username, phone);
-    console.log("resRegister", res);
     if (res.EC === 0) {
       router.push("/login");
     }

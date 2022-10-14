@@ -1,21 +1,24 @@
 import Head from "next/head";
-import React, { MutableRefObject, useEffect, useRef, useState } from "react";
-import { useForm, SubmitHandler } from "react-hook-form";
+import React, {
+  MutableRefObject,
+  useContext,
+  useEffect,
+  useRef,
+  useState,
+} from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { AiFillEye, AiFillEyeInvisible } from "react-icons/ai";
 import { useRouter } from "next/router";
 import { toast } from "react-toastify";
 import { loginUser } from "../services/userServices";
-import { useAppDispatch, useAppSelector } from "../app/hooks";
-import { loginUserSlice, selectLogin } from "../features/user/loginSlice";
+import { UserContext } from "../context/UserContext";
+import { UserContextType } from "../typings";
 
 const Login = () => {
   const router = useRouter();
 
-  const dispatch = useAppDispatch();
-
-  const user = useAppSelector(selectLogin);
+  const { user, loginContext } = useContext(UserContext) as UserContextType;
 
   const RefEmail = useRef() as MutableRefObject<HTMLInputElement>;
   const RefPwt = useRef() as MutableRefObject<HTMLInputElement>;
@@ -60,7 +63,7 @@ const Login = () => {
           username,
         },
       };
-      dispatch(loginUserSlice(data));
+      loginContext(data);
       localStorage.setItem("yame-token", token);
       router.push("/");
     }

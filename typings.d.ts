@@ -11,3 +11,20 @@ export interface User {
   groupId?: number;
   productId?: number;
 }
+
+// @types.User.ts
+export interface IUser {
+  isLoading?: boolean;
+  isAuthenticated?: boolean;
+  token?: string;
+  account: {
+    groupWithRoles?: number | sting;
+    email?: string;
+    username?: string;
+  };
+}
+export type UserContextType = {
+  user?: IUser;
+  loginContext: (userData: IUser) => void;
+  logoutContext: (userData: IUser) => void | null;
+};

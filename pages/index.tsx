@@ -8,27 +8,14 @@ import Sales from "../components/Sales";
 import ThumbColor from "../components/ThumbColor";
 import Thumnail from "../components/Thumbnail";
 import { RotatingLines } from "react-loader-spinner";
-import { useAppSelector } from "../app/hooks";
+import { useAppDispatch, useAppSelector } from "../app/hooks";
 import { selectLogin } from "../features/user/loginSlice";
 import { useEffect, useState } from "react";
 
 const Home: NextPage = () => {
-  // const isShowLoading = useAppSelector(selectLoginLoading);
 
-  // if (isShowLoading?.isLoading) {
-  //   return (
-  //     <div className="flex h-screen w-screen items-center justify-center">
-  //       <RotatingLines
-  //         strokeColor="black"
-  //         strokeWidth="5"
-  //         animationDuration="0.75"
-  //         width="96"
-  //         visible={true}
-  //       />
-  //     </div>
-  //   );
-  // }
   const [showChild, setShowChild] = useState(false);
+
   useEffect(() => {
     setShowChild(true);
   }, []);
