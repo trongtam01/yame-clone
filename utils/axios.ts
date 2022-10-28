@@ -1,4 +1,5 @@
 import axios, { AxiosRequestConfig, AxiosResponse } from "axios";
+import { toast } from "react-toastify";
 
 // Set config defaults when creating the instance
 const instance = axios.create({
@@ -41,14 +42,14 @@ instance.interceptors.response.use(
     switch (status) {
       // authentication (token related issues)
       case 401: {
-        // toast.error('Unauthorized the user. Please Login...')
-        // window.location.href = '/login'
+        toast.error('Unauthorized the user. Please Login...')
+        window.location.href = '/login'
         return err && err.response.data;
       }
 
       // forbidden (permission related issues)
       case 403: {
-        // toast.error(`You don't have to the permission to access this resource...`)
+        toast.error(`You don't have to the permission to access this resource...`)
         return Promise.reject(err);
       }
 
@@ -59,12 +60,12 @@ instance.interceptors.response.use(
 
       // not found
       case 404: {
-        // if(window.location.pathname !== '/'
-        //     && window.location.pathname !== '/login'
-        //     && window.location.pathname !== '/register'
-        //   ) {
-        //     toast.error('Unauthorized the user. Please Login...')
-        //   }
+        if(window.location.pathname !== '/'
+            && window.location.pathname !== '/login'
+            && window.location.pathname !== '/register'
+          ) {
+            toast.error('Unauthorized the user. Please Login...')
+          }
         return Promise.reject(err);
       }
 

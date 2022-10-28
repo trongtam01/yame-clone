@@ -1,3 +1,11 @@
+export type ChangeEvent<T = HTMLInputElement> = React.ChangeEventHandler<T>;
+
+export type ClickEvent<T = HTMLButtonElement> = React.MouseEventHandler<T>;
+
+export type SelectEvent<T = HTMLSelectElement> = React.ChangeEvent<T>;
+
+export type KeyDownEvent<T = HTMLInputElement> = React.KeyboardEventHandler<T>;
+
 export interface ListResponse<T> {
   data: T[];
 }
@@ -7,9 +15,29 @@ export interface User {
   email?: string;
   password?: string;
   username?: string;
-  phone?: string;
-  groupId?: number;
+  phone?: string | number;
+  Group?: {
+    id?: number;
+    name?: string;
+    description?: string;
+  };
   productId?: number;
+}
+
+export interface UserData {
+  id?: number;
+  email?: string;
+  password?: string;
+  username?: string;
+  phone?: string | number;
+  groupId?: number | string | undefined;
+  productId?: number;
+}
+
+export interface UserGroup {
+  id?: number;
+  name?: string;
+  description?: string;
 }
 
 // @types.User.ts
